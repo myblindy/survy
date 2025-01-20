@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://cuwlnmd1jyr35"]
+
+[ext_resource type="Script" path="res://Entities/ActorSpawner/actor_spawner.gd" id="1_at0sx"]
+[ext_resource type="Shader" path="res://Entities/ActorSpawner/actor_spawner.gdshader" id="1_x71cd"]
+[ext_resource type="Texture2D" uid="uid://dl7lveipttlua" path="res://Entities/ActorSpawner/actor_spawner.png" id="1_xgn4o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1xn0d"]
+shader = ExtResource("1_x71cd")
+shader_parameter/highlight_color = Color(0.811517, 0, 0.362003, 1)
+shader_parameter/lifetime_percentage = 0.78
+
+[node name="ActorSpawner" type="Node2D"]
+script = ExtResource("1_at0sx")
+
+[node name="ActorSpawnerSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_1xn0d")
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_xgn4o")
