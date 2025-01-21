@@ -8,6 +8,7 @@ func _ready() -> void:
 	var player: Player = GameState.player_scene.instantiate()
 	player.position = Vector2(GameState.width / 2.0, GameState.height / 2.0)
 	add_child(player)
+	player.add_to_group("player")
 
 var _current_spawn_idx := 0
 func _process(delta: float) -> void:

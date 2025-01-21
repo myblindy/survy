@@ -1,7 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://du3y5gfy31n6u"]
+[gd_scene load_steps=5 format=3 uid="uid://du3y5gfy31n6u"]
 
 [ext_resource type="Script" path="res://Entities/Actors/ShittyDude/shitty_dude.gd" id="1_h0wxe"]
 [ext_resource type="PackedScene" uid="uid://bc3a7hxfwg126" path="res://Entities/Actors/BaseActor/base_actor.tscn" id="1_mgly1"]
+[ext_resource type="Texture2D" uid="uid://d32mpnli3h2ek" path="res://Textures/actors.webp" id="3_18etb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jxr7y"]
+radius = 41.0
+height = 82.0
 
 [node name="BaseActor" instance=ExtResource("1_mgly1")]
 script = ExtResource("1_h0wxe")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+position = Vector2(-12.79, -60)
+texture = ExtResource("3_18etb")
+region_enabled = true
+region_rect = Rect2(431, 42, 131, 143)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+position = Vector2(-3, -1)
+shape = SubResource("CapsuleShape2D_jxr7y")

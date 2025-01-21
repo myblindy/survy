@@ -1,8 +1,7 @@
 class_name ShittyDude
-extends BaseActor
+extends BaseEnemy
 
-func is_enemy() -> bool:
-	return true
-
-func _ready() -> void:
-	set_texture_name("res://Entities/Actors/ShittyDude/shitty_dude.png")
+func _physics_process(delta: float) -> void:
+	velocity = player.position - position
+	velocity = velocity.normalized() * 700.0
+	move_and_slide()

@@ -20,6 +20,7 @@ func _process(delta: float) -> void:
 		var actor: Node2D = actor_scene_to_spawn.instantiate()
 		actor.position = position
 		get_parent().add_child(actor)
+		actor.add_to_group("enemies")
 
 		# and kill ourselves
 		queue_free()

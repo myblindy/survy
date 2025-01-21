@@ -1,17 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bc3a7hxfwg126"]
+[gd_scene load_steps=2 format=3 uid="uid://bc3a7hxfwg126"]
 
 [ext_resource type="Script" path="res://Entities/Actors/BaseActor/base_actor.gd" id="1_qiwvf"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0pah2"]
-radius = 40.0
-height = 140.64
-
 [node name="BaseActor" type="CharacterBody2D"]
 script = ExtResource("1_qiwvf")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-offset = Vector2(0, -50)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -52.83)
-shape = SubResource("CapsuleShape2D_0pah2")
