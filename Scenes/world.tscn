@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c5qiw0irc4jew"]
 
 [ext_resource type="Script" path="res://Scenes/world.gd" id="1_wip0a"]
-[ext_resource type="Texture2D" uid="uid://2g8vxgw3vkrj" path="res://Textures/885.jpg" id="2_w5fwu"]
+[ext_resource type="Texture2D" uid="uid://2g8vxgw3vkrj" path="res://Textures/floor.jpg" id="2_w5fwu"]
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
@@ -22,11 +22,11 @@ metadata/_edit_use_anchors_ = true
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.180392)
 self_modulate = Color(0.646029, 0.646029, 0.646029, 1)
-offset_left = -32000.0
-offset_top = -44160.0
-offset_right = 1.188e+06
-offset_bottom = 1.70832e+06
-scale = Vector2(0.05, 0.05)
+offset_left = -61824.0
+offset_top = -87552.0
+offset_right = 1.15818e+06
+offset_bottom = 1.66493e+06
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_w5fwu")
 expand_mode = 5
 stretch_mode = 1
