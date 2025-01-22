@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://cd7lpehqwg6lm"]
+[gd_scene load_steps=8 format=3 uid="uid://cd7lpehqwg6lm"]
 
 [ext_resource type="Script" path="res://Entities/Actors/Player/player.gd" id="2_tnr0j"]
 [ext_resource type="Texture2D" uid="uid://d32mpnli3h2ek" path="res://Textures/actors.webp" id="3_54blw"]
 [ext_resource type="PackedScene" uid="uid://b532jptl83m5i" path="res://Entities/Components/sprite_component.tscn" id="3_l1rb4"]
 [ext_resource type="PackedScene" uid="uid://c77rccg02ckaf" path="res://Entities/Components/health_component.tscn" id="3_qwnb2"]
 [ext_resource type="PackedScene" uid="uid://dg5rrbqib6u54" path="res://Entities/Components/player_movement_component.tscn" id="4_c7i0n"]
+[ext_resource type="PackedScene" uid="uid://dic8l8mx3smyw" path="res://Entities/Components/hurt_box_component.tscn" id="6_6f4uc"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2jpwt"]
+radius = 49.0
+height = 142.0
 
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
@@ -26,3 +31,11 @@ _sprite_component = NodePath("../SpriteComponent")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
+
+[node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_6f4uc")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+position = Vector2(-1, -65)
+shape = SubResource("CapsuleShape2D_2jpwt")
+debug_color = Color(4.13924e-06, 0.64637, 0.238671, 0.42)
