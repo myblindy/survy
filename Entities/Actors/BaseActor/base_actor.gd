@@ -1,2 +1,0 @@
-class_name BaseActor
-extends CharacterBody2D

@@ -1,22 +1,32 @@
-[gd_scene load_steps=5 format=3 uid="uid://du3y5gfy31n6u"]
+[gd_scene load_steps=7 format=3 uid="uid://du3y5gfy31n6u"]
 
 [ext_resource type="Script" path="res://Entities/Actors/ShittyDude/shitty_dude.gd" id="1_h0wxe"]
-[ext_resource type="PackedScene" uid="uid://bc3a7hxfwg126" path="res://Entities/Actors/BaseActor/base_actor.tscn" id="1_mgly1"]
+[ext_resource type="PackedScene" uid="uid://c77rccg02ckaf" path="res://Entities/Components/health_component.tscn" id="3_0ucsh"]
 [ext_resource type="Texture2D" uid="uid://d32mpnli3h2ek" path="res://Textures/actors.webp" id="3_18etb"]
+[ext_resource type="PackedScene" uid="uid://b532jptl83m5i" path="res://Entities/Components/sprite_component.tscn" id="4_nf7km"]
+[ext_resource type="PackedScene" uid="uid://bushpfga5apat" path="res://Entities/Components/enemy_movement_component.tscn" id="5_h0xw7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jxr7y"]
 radius = 41.0
 height = 82.0
 
-[node name="BaseActor" instance=ExtResource("1_mgly1")]
+[node name="ShittyDude" type="CharacterBody2D"]
 script = ExtResource("1_h0wxe")
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, -1)
+shape = SubResource("CapsuleShape2D_jxr7y")
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_0ucsh")]
+
+[node name="SpriteComponent" parent="." node_paths=PackedStringArray("_sprite") instance=ExtResource("4_nf7km")]
+_sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteComponent"]
 position = Vector2(-12.79, -60)
 texture = ExtResource("3_18etb")
 region_enabled = true
 region_rect = Rect2(431, 42, 131, 143)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
-position = Vector2(-3, -1)
-shape = SubResource("CapsuleShape2D_jxr7y")
+[node name="EnemyMovementComponent" parent="." instance=ExtResource("5_h0xw7")]
+base_movement_multiplier = 500.0
