@@ -23,7 +23,7 @@ class WaveSpawnData:
 		actor_count = _actor_count
 		actor_scene = _actor_scene
 
-static var waves := [
+static var waves: Array[WaveData] = [
 	WaveData.new(20.0, [
 		WaveSpawnData.new(0, 3, shitty_dude_scene),
 		WaveSpawnData.new(5, 4, shitty_dude_scene),

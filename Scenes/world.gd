@@ -28,11 +28,11 @@ func _process(delta: float) -> void:
 
 		if _current_spawn_idx < len(wave.spawns):
 			var spawn_data := wave.spawns[_current_spawn_idx]
-			if _time_sec >= spawn_data[0]:
+			if _time_sec >= spawn_data.wave_time_sec:
 
-				for i in range(spawn_data[1]):
+				for i in range(spawn_data.actor_count):
 					var spawner: ActorSpawner = GameState.actor_spawner_scene.instantiate()
-					spawner.actor_scene_to_spawn = spawn_data[2]
+					spawner.actor_scene_to_spawn = spawn_data.actor_scene
 					spawner.position = Vector2(randf_range(30, GameState.width - 60), randf_range(30, GameState.height - 60))
 					add_child(spawner)
 
