@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsyit1ijg1nps"]
+
+[ext_resource type="Script" path="res://Entities/Components/health_bar_component.gd" id="1_t17s6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eyddh"]
+bg_color = Color(0.960784, 0, 0, 1)
+
+[node name="HealthBarComponent" type="Node2D"]
+script = ExtResource("1_t17s6")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -9.5
+offset_right = 39.0
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/fill = SubResource("StyleBoxFlat_eyddh")
+value = 15.0
+show_percentage = false
