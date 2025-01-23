@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb4xp3flf7v8t"]
+
+[ext_resource type="Script" path="res://Entities/Weapons/rotating_orbs.gd" id="1_3om5p"]
+
+[node name="RotatingOrbs" type="Node2D"]
+script = ExtResource("1_3om5p")
