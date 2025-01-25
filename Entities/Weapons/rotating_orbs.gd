@@ -1,6 +1,10 @@
 extends Node2D
 
-@export var radius := 140.0
+@export_category("Bindings")
+@export var stats_component: StatsComponent
+
+@export_category("Weapon Properties")
+@export var radius := 200.0
 @export var orb_count := 3
 @export var orb_speed := 2.0
 @export var orb_scale := 1.0
@@ -24,3 +28,5 @@ func _process(delta: float) -> void:
 	_time_sec += delta
 	for i in range(orb_count):
 		_orbs[i].position = Vector2(cos(_time_sec * orb_speed + i * TAU / orb_count) * _radius, sin(_time_sec * orb_speed + i * TAU / orb_count) * _radius)
+		_orbs[i].set_damage(GameState.Damage.new(3.0, GameState.DamageType.ARCANE))
+		

@@ -1,16 +1,16 @@
 extends Node2D
 
-@onready var _time_label: Label = $CanvasLayer/TimeLabel
+@onready var _time_label := $CanvasLayer/TimeLabel
+@onready var _game_entities := $GameEntities
 var _time_sec := 0.0
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
-	# spawn the player
-	var player: Player = GameState.player_scene.instantiate()
-	player.position = Vector2(GameState.width / 2.0, GameState.height / 2.0)
-	add_child(player)
-	player.add_to_group("player")
+	GameState.signals.game_over.connect(func():
+		get_tree().paused = true
+		%GameOver.visible = true
+	)
 
 var _current_wave_idx := 0
 var _current_spawn_idx := 0
@@ -33,7 +33,11 @@ func _process(delta: float) -> void:
 				for i in range(spawn_data.actor_count):
 					var spawner: ActorSpawner = GameState.actor_spawner_scene.instantiate()
 					spawner.actor_scene_to_spawn = spawn_data.actor_scene
-					spawner.position = Vector2(randf_range(30, GameState.width - 60), randf_range(30, GameState.height - 60))
-					add_child(spawner)
+					spawner.position = Vector2(randf_range(-GameState.width / 2.0, GameState.width / 2.0), 
+						randf_range(-GameState.height / 2.0, GameState.height / 2.0))
+					_game_entities.add_child(spawner)
 
 				_current_spawn_idx += 1
+
+func _on_player_child_exiting_tree(_node: Node) -> void:
+	GameState.signals.game_over.emit()

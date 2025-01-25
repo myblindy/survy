@@ -9,8 +9,21 @@ static var rotating_orbs_scene := preload("res://Entities/Weapons/rotating_orbs.
 
 #actors
 static var player_scene := load("res://Entities/Actors/Player/player.tscn")
-static var actor_spawner_scene := preload("res://Entities/ActorSpawner/actor_spawner.tscn")
-static var shitty_dude_scene := preload("res://Entities/Actors/ShittyDude/shitty_dude.tscn")
+static var actor_spawner_scene := load("res://Entities/ActorSpawner/actor_spawner.tscn")
+static var shitty_dude_scene := load("res://Entities/Actors/ShittyDude/shitty_dude.tscn")
+
+enum DamageType {
+	PHYSICAL,
+	ARCANE,
+}
+
+class Damage:
+	var amount: float
+	var type: DamageType
+
+	func _init(_amount: float = 1.0, _type: DamageType = DamageType.PHYSICAL) -> void:
+		amount = _amount
+		type = _type
 
 class WaveData:
 	var wave_length_sec: float
@@ -40,3 +53,10 @@ static var waves: Array[WaveData] = [
 
 static var width := 2500
 static var height := 2500
+
+class Signals:
+	signal game_over
+	signal wave_won
+	signal game_won
+
+static var signals := Signals.new()

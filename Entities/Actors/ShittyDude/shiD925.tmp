@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://du3y5gfy31n6u"]
+[gd_scene load_steps=10 format=3 uid="uid://du3y5gfy31n6u"]
 
 [ext_resource type="Script" path="res://Entities/Actors/ShittyDude/shitty_dude.gd" id="1_h0wxe"]
 [ext_resource type="PackedScene" uid="uid://c77rccg02ckaf" path="res://Entities/Components/health_component.tscn" id="3_0ucsh"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bushpfga5apat" path="res://Entities/Components/enemy_movement_component.tscn" id="5_h0xw7"]
 [ext_resource type="PackedScene" uid="uid://4tnne2chnmv6" path="res://Entities/Components/hit_box_component.tscn" id="6_1qv47"]
 [ext_resource type="PackedScene" uid="uid://dic8l8mx3smyw" path="res://Entities/Components/hurt_box_component.tscn" id="7_ep22n"]
-[ext_resource type="PackedScene" uid="uid://8tsa5acdpoei" path="res://Entities/Components/stats_component.tscn" id="8_ciwp3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jxr7y"]
 radius = 41.0
@@ -20,15 +19,12 @@ height = 146.0
 [node name="ShittyDude" type="CharacterBody2D"]
 script = ExtResource("1_h0wxe")
 
-[node name="StatsComponent" parent="." instance=ExtResource("8_ciwp3")]
-
-[node name="HealthComponent" parent="." node_paths=PackedStringArray("_sprite_component", "_stats_component") instance=ExtResource("3_0ucsh")]
-_sprite_component = NodePath("../SpriteComponent")
-_stats_component = NodePath("../StatsComponent")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_jxr7y")
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("_sprite_component") instance=ExtResource("3_0ucsh")]
+_sprite_component = NodePath("../SpriteComponent")
 
 [node name="SpriteComponent" parent="." node_paths=PackedStringArray("_sprite") instance=ExtResource("4_nf7km")]
 _sprite = NodePath("Sprite2D")

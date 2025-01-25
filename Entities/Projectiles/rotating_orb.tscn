@@ -1,23 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqk20mmy6jyry"]
+[gd_scene load_steps=6 format=3 uid="uid://dqk20mmy6jyry"]
 
+[ext_resource type="Script" path="res://Entities/Projectiles/rotating_orb.gd" id="1_jyils"]
 [ext_resource type="PackedScene" uid="uid://4tnne2chnmv6" path="res://Entities/Components/hit_box_component.tscn" id="1_rfe3w"]
 
 [sub_resource type="Gradient" id="Gradient_1nxhj"]
 interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.675325, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.215247, 0.636771, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ec0hd"]
 gradient = SubResource("Gradient_1nxhj")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wgxng"]
 radius = 26.3059
 
 [node name="RotatingOrb" type="Node2D"]
+script = ExtResource("1_jyils")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0, 0.760784, 1, 1)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -32,6 +36,7 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_ec0hd")
 
 [node name="HitBoxComponent" parent="." instance=ExtResource("1_rfe3w")]
+visible = false
 collision_layer = 4
 collision_mask = 4
 

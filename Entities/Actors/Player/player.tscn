@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cd7lpehqwg6lm"]
+[gd_scene load_steps=12 format=3 uid="uid://cd7lpehqwg6lm"]
 
 [ext_resource type="Script" path="res://Entities/Actors/Player/player.gd" id="2_tnr0j"]
 [ext_resource type="Texture2D" uid="uid://d32mpnli3h2ek" path="res://Textures/actors.webp" id="3_54blw"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bsyit1ijg1nps" path="res://Entities/Components/health_bar_component.tscn" id="7_inabs"]
 [ext_resource type="PackedScene" uid="uid://wfrm1yjids1h" path="res://Entities/Components/weapons_component.tscn" id="8_xq7de"]
 [ext_resource type="PackedScene" uid="uid://cb4xp3flf7v8t" path="res://Entities/Weapons/rotating_orbs.tscn" id="9_6i7uu"]
+[ext_resource type="PackedScene" uid="uid://8tsa5acdpoei" path="res://Entities/Components/stats_component.tscn" id="10_2jdur"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2jpwt"]
 radius = 49.0
@@ -18,7 +19,11 @@ height = 142.0
 motion_mode = 1
 script = ExtResource("2_tnr0j")
 
-[node name="HealthComponent" parent="." instance=ExtResource("3_qwnb2")]
+[node name="StatsComponent" parent="." instance=ExtResource("10_2jdur")]
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("_sprite_component", "_stats_component") instance=ExtResource("3_qwnb2")]
+_sprite_component = NodePath("../SpriteComponent")
+_stats_component = NodePath("../StatsComponent")
 
 [node name="SpriteComponent" parent="." node_paths=PackedStringArray("_sprite") instance=ExtResource("3_l1rb4")]
 _sprite = NodePath("Sprite2D")
