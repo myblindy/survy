@@ -12,6 +12,9 @@ static var player_scene := load("res://Entities/Actors/Player/player.tscn")
 static var actor_spawner_scene := load("res://Entities/ActorSpawner/actor_spawner.tscn")
 static var shitty_dude_scene := load("res://Entities/Actors/ShittyDude/shitty_dude.tscn")
 
+#misc
+static var sprite_melter_scene := preload("res://Entities/SpriteMelter/sprite_melter.tscn")
+
 enum DamageType {
 	PHYSICAL,
 	ARCANE,
@@ -46,8 +49,8 @@ class WaveSpawnData:
 static var waves: Array[WaveData] = [
 	WaveData.new(20.0, [
 		WaveSpawnData.new(0, 3, shitty_dude_scene),
-		WaveSpawnData.new(5, 4, shitty_dude_scene),
-		WaveSpawnData.new(10, 6, shitty_dude_scene),
+		#WaveSpawnData.new(5, 4, shitty_dude_scene),
+		#WaveSpawnData.new(10, 6, shitty_dude_scene),
 	]),
 ]
 

@@ -40,10 +40,10 @@ text = "GAME OVER :("
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.180392)
 self_modulate = Color(0.646029, 0.646029, 0.646029, 1)
-offset_left = -61824.0
-offset_top = -87552.0
-offset_right = 1.15818e+06
-offset_bottom = 1.66493e+06
+offset_left = -61913.0
+offset_top = -87569.0
+offset_right = 1.15809e+06
+offset_bottom = 1.66491e+06
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_w5fwu")
 expand_mode = 5
