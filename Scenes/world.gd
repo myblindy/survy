@@ -2,6 +2,12 @@ extends Node2D
 
 @onready var _time_label := $CanvasLayer/TimeLabel
 @onready var _game_entities := $GameEntities
+
+@onready var _player_health_bar_progress_bar := $CanvasLayer/VBoxContainer/MarginContainer/PlayerHealthBarProgressBar
+@onready var _player_health_bar_label := $CanvasLayer/VBoxContainer/MarginContainer/PlayerHealthBarLabel
+@onready var _player_experience_bar_progress_bar := $CanvasLayer/VBoxContainer/MarginContainer2/PlayerExperienceBarProgressBar
+@onready var _player_experience_bar_label := $CanvasLayer/VBoxContainer/MarginContainer2/PlayerExperienceBarLabel
+
 var _time_sec := 0.0
 
 func _ready() -> void:
@@ -10,6 +16,18 @@ func _ready() -> void:
 	GameState.signals.game_over.connect(func():
 		get_tree().paused = true
 		%GameOver.visible = true
+	)
+
+	GameState.signals.player_health_changed.connect(func(health: float, max_health: float):
+		_player_health_bar_progress_bar.value = health
+		_player_health_bar_progress_bar.max_value = max_health
+		_player_health_bar_label.text = "Health: %d/%d" % [int(health), int(max_health)]
+	)
+
+	GameState.signals.player_experience_changed.connect(func(experience: float, max_level_experience: float):
+		_player_experience_bar_progress_bar.value = experience
+		_player_experience_bar_progress_bar.max_value = max_level_experience
+		_player_experience_bar_label.text = "EXP: %d/%d" % [int(experience), int(max_level_experience)]
 	)
 
 var _current_wave_idx := 0

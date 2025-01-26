@@ -1,12 +1,34 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5qiw0irc4jew"]
+[gd_scene load_steps=6 format=3 uid="uid://c5qiw0irc4jew"]
 
 [ext_resource type="Script" path="res://Scenes/world.gd" id="1_wip0a"]
 [ext_resource type="Texture2D" uid="uid://2g8vxgw3vkrj" path="res://Textures/floor.jpg" id="2_w5fwu"]
 [ext_resource type="PackedScene" uid="uid://cd7lpehqwg6lm" path="res://Entities/Actors/Player/player.tscn" id="3_phd8f"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jr0m"]
+bg_color = Color(1, 0.152941, 0.152941, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6nsc"]
+bg_color = Color(0.152941, 1, 0.152941, 1)
+
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_wip0a")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.180392)
+self_modulate = Color(0.646029, 0.646029, 0.646029, 1)
+offset_left = -61913.0
+offset_top = -87569.0
+offset_right = 1.15809e+06
+offset_bottom = 1.66491e+06
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_w5fwu")
+expand_mode = 5
+stretch_mode = 1
+
+[node name="GameEntities" type="Node2D" parent="."]
+
+[node name="Player" parent="GameEntities" groups=["player"] instance=ExtResource("3_phd8f")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -37,20 +59,43 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 60
 text = "GAME OVER :("
 
-[node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.180392)
-self_modulate = Color(0.646029, 0.646029, 0.646029, 1)
-offset_left = -61913.0
-offset_top = -87569.0
-offset_right = 1.15809e+06
-offset_bottom = 1.66491e+06
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_w5fwu")
-expand_mode = 5
-stretch_mode = 1
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_right = 202.0
+offset_bottom = 69.0
 
-[node name="GameEntities" type="Node2D" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 10
 
-[node name="Player" parent="GameEntities" groups=["player"] instance=ExtResource("3_phd8f")]
+[node name="PlayerHealthBarProgressBar" type="ProgressBar" parent="CanvasLayer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_7jr0m")
+value = 10.0
+show_percentage = false
+
+[node name="PlayerHealthBarLabel" type="Label" parent="CanvasLayer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "Health: X/X"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+
+[node name="PlayerExperienceBarProgressBar" type="ProgressBar" parent="CanvasLayer/VBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_j6nsc")
+value = 10.0
+show_percentage = false
+
+[node name="PlayerExperienceBarLabel" type="Label" parent="CanvasLayer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+text = "EXP: X"
+horizontal_alignment = 1
 
 [connection signal="child_exiting_tree" from="GameEntities/Player" to="." method="_on_player_child_exiting_tree"]

@@ -21,6 +21,7 @@ height = 146.0
 script = ExtResource("1_h0wxe")
 
 [node name="StatsComponent" parent="." instance=ExtResource("8_ciwp3")]
+experience_base_drop = 0.8
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("_sprite_component", "_stats_component") instance=ExtResource("3_0ucsh")]
 _sprite_component = NodePath("../SpriteComponent")

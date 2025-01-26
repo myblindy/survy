@@ -1,6 +1,7 @@
 @tool
 
 extends Area2D
+class_name HurtBoxComponent
 
 @export var health_component: HealthComponent
 @onready var _actor: Node2D = get_parent()
@@ -19,7 +20,8 @@ func _on_area_entered(area: Area2D) -> void:
 		_intersections.append(area)
 
 func _on_area_exited(area: Area2D) -> void:
-	_intersections.erase(area)
+	if area is HitBoxComponent:
+		_intersections.erase(area)
 		
 func _process(_delta: float) -> void:
 	for intersection in _intersections:	

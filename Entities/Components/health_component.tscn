@@ -4,3 +4,5 @@
 
 [node name="HealthComponent" type="Node"]
 script = ExtResource("1_1rohs")
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
