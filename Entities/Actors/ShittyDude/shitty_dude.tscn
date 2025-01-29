@@ -44,7 +44,6 @@ region_rect = Rect2(431, 42, 131, 143)
 base_movement_multiplier = 500.0
 
 [node name="HitBoxComponent" parent="." instance=ExtResource("6_1qv47")]
-parent_is_enemy = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
 position = Vector2(2, -58)

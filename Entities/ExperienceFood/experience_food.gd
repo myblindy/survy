@@ -33,11 +33,14 @@ var target_position: Vector2
 func _ready() -> void:
 	$Sprite2D.texture = materials.pick_random()
 
+var _time := 0.0
 func _process(delta: float) -> void:
+	_time += delta
+	
 	match _state:
 		State.STATE_MOVING_TO_INITIAL_POSITION:
 			var direction := target_position - position
-			if direction.length() < 5.0:
+			if direction.length() < 8.0 or _time >= 1:
 				_state = State.STATE_ACTIVE
 				position = target_position
 			else:
