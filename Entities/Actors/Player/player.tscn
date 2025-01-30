@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dic8l8mx3smyw" path="res://Entities/Components/hurt_box_component.tscn" id="6_6f4uc"]
 [ext_resource type="PackedScene" uid="uid://bsyit1ijg1nps" path="res://Entities/Components/health_bar_component.tscn" id="7_inabs"]
 [ext_resource type="PackedScene" uid="uid://wfrm1yjids1h" path="res://Entities/Components/weapons_component.tscn" id="8_xq7de"]
-[ext_resource type="PackedScene" uid="uid://cb4xp3flf7v8t" path="res://Entities/Weapons/rotating_orbs.tscn" id="9_6i7uu"]
 [ext_resource type="PackedScene" uid="uid://8tsa5acdpoei" path="res://Entities/Components/stats_component.tscn" id="10_2jdur"]
+[ext_resource type="PackedScene" uid="uid://bgbxgwr6vqw81" path="res://Entities/Weapons/chain_lightning.tscn" id="10_15dtt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2jpwt"]
 radius = 49.0
@@ -57,6 +57,6 @@ _health_component = NodePath("../HealthComponent")
 [node name="WeaponsComponent" parent="." instance=ExtResource("8_xq7de")]
 position = Vector2(0, -65)
 
-[node name="RotatingOrbs" parent="WeaponsComponent" instance=ExtResource("9_6i7uu")]
+[node name="ChainLightning" parent="WeaponsComponent" instance=ExtResource("10_15dtt")]
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered" flags=7]

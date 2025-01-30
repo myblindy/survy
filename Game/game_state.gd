@@ -3,9 +3,11 @@ extends Object
 
 #projectiles
 static var rotating_orb_scene := preload("res://Entities/Projectiles/rotating_orb.tscn")
+static var lightning_bolt_projectile := preload("res://Entities/Projectiles/lighting_bolt_projectile.tscn")
 
 #weapons
 static var rotating_orbs_scene := preload("res://Entities/Weapons/rotating_orbs.tscn")
+static var chain_lightning_scene := preload("res://Entities/Weapons/chain_lightning.tscn")
 
 #actors
 static var player_scene := load("res://Entities/Actors/Player/player.tscn")

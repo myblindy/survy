@@ -1,12 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://twsw30w730n0"]
+[gd_scene load_steps=3 format=3 uid="uid://twsw30w730n0"]
 
-[ext_resource type="Texture2D" uid="uid://d32mpnli3h2ek" path="res://Textures/actors.webp" id="1_lnaco"]
+[ext_resource type="PackedScene" uid="uid://cd7lpehqwg6lm" path="res://Entities/Actors/Player/player.tscn" id="1_gsx3c"]
+[ext_resource type="PackedScene" uid="uid://c3hwou24j6cj2" path="res://Entities/Projectiles/lighting_bolt_projectile.tscn" id="1_gvjat"]
 
 [node name="TestScene" type="Node2D"]
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2(25, 19)
-scale = Vector2(1.38226, 1)
-texture = ExtResource("1_lnaco")
-polygon = PackedVector2Array(236, 95, 149, 397, 476, 212)
-uv = PackedVector2Array(0, 300, 300, 0, 300, 300)
+[node name="Player" parent="." instance=ExtResource("1_gsx3c")]
+position = Vector2(446, 235)
+
+[node name="LightingBoltProjectile" parent="." instance=ExtResource("1_gvjat")]
+position = Vector2(93, 52)
+points = PackedVector2Array(125, 183, 396, 85, 558, 70, 702, 192, 739, 30)

@@ -30,6 +30,8 @@ y_sort_enabled = true
 
 [node name="Player" parent="GameEntities" groups=["player"] instance=ExtResource("3_phd8f")]
 
+[node name="GameEntitiesOverlay" type="Node2D" parent="."]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TimeLabel" type="Label" parent="CanvasLayer"]

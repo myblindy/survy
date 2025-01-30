@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3hwou24j6cj2"]
+
+[ext_resource type="Texture2D" uid="uid://cqccmosucc61t" path="res://Textures/spark_06.png" id="1_0t4xn"]
+[ext_resource type="Script" path="res://Entities/Projectiles/lighting_bolt_projectile.gd" id="2_kovki"]
+
+[node name="LightingBoltProjectile" type="Line2D"]
+points = PackedVector2Array(0, 0, 0, 0)
+width = 40.19
+default_color = Color(0.643137, 0.937255, 0.941176, 1)
+texture = ExtResource("1_0t4xn")
+texture_mode = 1
+script = ExtResource("2_kovki")
