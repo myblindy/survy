@@ -32,6 +32,8 @@ y_sort_enabled = true
 
 [node name="GameEntitiesOverlay" type="Node2D" parent="."]
 
+[node name="GameEntitiesTextOverlay" type="Node2D" parent="."]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TimeLabel" type="Label" parent="CanvasLayer"]

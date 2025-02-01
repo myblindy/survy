@@ -21,6 +21,8 @@ var _max_health := 10.0
 
 @export var auto_destroy_on_death := true
 
+signal damage_taken(damage: GameState.Damage, source: Node2D)
+
 var _health: float
 var health: float:
 	set(new_health):
@@ -38,8 +40,10 @@ func take_damage(damage: GameState.Damage, source: Node2D) -> void:
 	var source_expiry_sec: float = _damage_protection_data.get_or_add(source, 0)
 	
 	if source_expiry_sec <= now_sec:
-		health -= damage.amount * _stats_component.damage_taken_multipliers[damage.type] as float * \
+		var final_damage := damage.amount * _stats_component.damage_taken_multipliers[damage.type] as float * \
 			(source.find_child("StatsComponent") as StatsComponent).damage_done_multipliers[damage.type] as float
+		damage_taken.emit(GameState.Damage.new(final_damage, damage.type), source)
+		health -= final_damage
 		
 		if health <= 0 and auto_destroy_on_death:
 			get_parent().queue_free()

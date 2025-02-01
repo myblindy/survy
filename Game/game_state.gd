@@ -17,6 +17,7 @@ static var shitty_dude_scene := load("res://Entities/Actors/ShittyDude/shitty_du
 #misc
 static var sprite_melter_scene := preload("res://Entities/SpriteMelter/sprite_melter.tscn")
 static var experience_food_scene := preload("res://Entities/ExperienceFood/experience_food.tscn")
+static var damage_number_scene := preload("res://Entities/Misc/damage_number.tscn")
 
 enum DamageType {
 	PHYSICAL,

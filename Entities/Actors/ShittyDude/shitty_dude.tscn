@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://du3y5gfy31n6u"]
+[gd_scene load_steps=12 format=3 uid="uid://du3y5gfy31n6u"]
 
 [ext_resource type="Script" path="res://Entities/Actors/ShittyDude/shitty_dude.gd" id="1_h0wxe"]
 [ext_resource type="PackedScene" uid="uid://c77rccg02ckaf" path="res://Entities/Components/health_component.tscn" id="3_0ucsh"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://4tnne2chnmv6" path="res://Entities/Components/hit_box_component.tscn" id="6_1qv47"]
 [ext_resource type="PackedScene" uid="uid://dic8l8mx3smyw" path="res://Entities/Components/hurt_box_component.tscn" id="7_ep22n"]
 [ext_resource type="PackedScene" uid="uid://8tsa5acdpoei" path="res://Entities/Components/stats_component.tscn" id="8_ciwp3"]
+[ext_resource type="PackedScene" uid="uid://b8gox8ix65n2j" path="res://Entities/Components/damage_taken_numbers.tscn" id="9_tacp0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jxr7y"]
 radius = 41.0
@@ -60,3 +61,6 @@ parent_is_enemy = true
 position = Vector2(2, -58)
 shape = SubResource("CapsuleShape2D_pm3q1")
 debug_color = Color(0.754484, 0.45647, 1.92523e-07, 0.42)
+
+[node name="DamageTakenNumbers" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("9_tacp0")]
+health_component = NodePath("../HealthComponent")
